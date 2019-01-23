@@ -5,6 +5,9 @@ jobs:
       - image: circleci/node:10.15
     steps:
       - checkout
-      - run: pwd
-      - run: ls
-      - run: node ./index.js
+      - run:
+          name: Install dependencies
+          command: npm install
+      - run:
+          name: Start server
+          command: npm start
