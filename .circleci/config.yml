@@ -5,4 +5,6 @@ jobs:
       - image: circleci/node:10.15
     steps:
       - checkout
-      - run: node ./secret-agent-id/index.js
+      - run: pwd
+      - run: ls
+      - run: node ./index.js
