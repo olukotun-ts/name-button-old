@@ -5,4 +5,4 @@ jobs:
       - image: circleci/node:10.15
     steps:
       - checkout
-      - run: echo "Hello out there!"
+      - run: node ./secret-agent-id/index.js
