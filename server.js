@@ -5,6 +5,6 @@ const port = 3000;
 
 app.use('/static', express.static('public'));
 app.get('/', (req, res) => {
-    res.sendFile('index.html', { root: __dirname + '/public/' });
+    res.sendFile('index.html', { root: __dirname });
 });
 app.listen(port, () => console.log(`Listening on port ${port}.`));

@@ -2,14 +2,21 @@
   "name": "secret-agent-id",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
-    "start": "node server.js", 
+    "build": "browserify main.js > public/bundle.js",
+    "dev": "nodemon --ignore ./public --exec npm start",
+    "start": "npm run build && node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "vue": "^2.5.22"
+  },
+  "devDependencies": {
+    "browserify": "^16.2.3",
+    "nodemon": "^1.18.9"
   }
 }
