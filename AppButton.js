@@ -1,3 +1,5 @@
+const chance = require('chance').Chance();
+
 module.exports = {
     data() {
         return {
@@ -7,7 +9,7 @@ module.exports = {
 
     methods: {
         generateName() {
-            this.name = 'New name';
+            this.name = chance.name({ suffix: true });
         }
     },
 

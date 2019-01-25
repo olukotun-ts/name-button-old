@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chance": "^1.0.18",
     "express": "^4.16.4",
     "vue": "^2.5.22"
   },
