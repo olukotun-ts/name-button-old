@@ -45,10 +45,7 @@ jobs:
           command: docker push registry.heroku.com/name-button/web
       - run:
           name: Install Heroku CLI
-          command: |
-            sudo apt-get update
-            sudo apt-get install snap
-            sudo snap install --classic heroku
+          command: curl https://cli-assets.heroku.com/install.sh | sh
       - run:
           name: Deploy Docker image to Heroku
           command: heroku container:release --app name-button web
