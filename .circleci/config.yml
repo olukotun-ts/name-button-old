@@ -11,10 +11,10 @@ jobs:
           command: echo "$DOCKER_PASS" | docker login -u $DOCKER_USER --password-stdin
       - run: 
           name: Build Docker image
-          command: docker build -t olukotunts/app .
+          command: docker build -t olukotunts/app:$CIRCLE_SHA1 .
       - run:
           name: Push Docker image to Docker Hub
-          command: docker push olukotunts/app
+          command: docker push olukotunts/app:$CIRCLE_SHA1
   test:
     docker:
       - image: circleci/node:10.15
@@ -33,10 +33,10 @@ jobs:
           command: echo "$DOCKER_PASS" | docker login -u $DOCKER_USER --password-stdin
       - run:
           name: Pull Docker image from Docker Hub
-          command: docker pull olukotunts/app
+          command: docker pull olukotunts/app:$CIRCLE_SHA1
       - run:
           name: Tag Docker image
-          command: docker tag olukotunts/app registry.heroku.com/name-button/web
+          command: docker tag olukotunts/app:$CIRCLE_SHA1 registry.heroku.com/name-button/web
       - run:
           name: Log in to Heroku Container Registry
           command: docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
