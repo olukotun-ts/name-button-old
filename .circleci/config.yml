@@ -5,7 +5,29 @@ jobs:
       - image: circleci/node:10.15
     steps:
       - checkout
-      - run: docker build -t app .
+      - run:
+          name: Install packages to allow apt to use a repository over HTTPS
+          command: sudo apt-get update && sudo apt-get install \
+            apt-transport-https \
+            ca-certificates \
+            gnupg-agent \
+            software-properties-common
+      - run:
+          name: Add Docker's official GPG key
+          command: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | \
+            sudo apt-key add -
+      - run:
+          name: Set up the stable repository
+          command: sudo add-apt-repository \
+            "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+            $(lsb_release -cs) \
+            stable"
+      - run:
+          name: Install Docker CE
+          command: sudo apt-get update && sudo apt-get install docker-ce
+      - run:
+          name: Build Docker container
+          command: docker build -t app .
   test:
     docker:
       - image: circleci/node:10.15
