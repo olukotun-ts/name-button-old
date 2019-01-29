@@ -44,6 +44,9 @@ jobs:
           name: Push Docker image to Heroku
           command: docker push registry.heroku.com/name-button/web
       - run:
+          name: Install Heroku CLI
+          command: sudo snap install --classic heroku
+      - run:
           name: Deploy Docker image to Heroku
           command: heroku container:release --app name-button web
 workflows:
