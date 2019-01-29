@@ -48,7 +48,11 @@ jobs:
           command: heroku container:release --app name-button web
 workflows:
   version: 2
-  build_and_test:
+  build_test_and_deploy:
     jobs:
       - test
       - build
+      - deploy:
+          requires:
+            - test
+            - build
