@@ -11,10 +11,10 @@ jobs:
           command: echo "$DOCKER_PASS" | docker login -u $DOCKER_USER --password-stdin
       - run: 
           name: Build Docker image
-          command: docker build -t app/$IMAGE_NAME:$TAG .
+          command: docker build -t olukotunts/$IMAGE_NAME:$TAG .
       - run:
           name: Push Docker image to Docker Hub
-          command: docker push app/$IMAGE_NAME:$TAG
+          command: docker push olukotunts/$IMAGE_NAME:$TAG
   test:
     docker:
       - image: circleci/node:10.15
