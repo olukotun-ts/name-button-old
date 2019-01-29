@@ -5,12 +5,7 @@ jobs:
       - image: circleci/node:10.15
     steps:
       - checkout
-      - run:
-          name: Install dependencies
-          command: npm install
-      # - run:
-      #     name: Start server
-      #     command: npm start
+      - run: docker build -t app .
   test:
     docker:
       - image: circleci/node:10.15
